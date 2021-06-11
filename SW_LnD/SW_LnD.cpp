@@ -73,6 +73,10 @@ int main()
                 secret5 = 1;
             else
                 secret5 = 0;
+            if (summonername == "cum2us")
+                secret4 = 1;
+            else
+                secret4 = 0;
             cout << "Choose lightning waiting time (current speed: " << sleeptime << "): ";
             cin >> sleeptime;
             cout << endl;
