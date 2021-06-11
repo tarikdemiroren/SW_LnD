@@ -11,6 +11,8 @@ using namespace std;
 
 int sleeptime = 1000;
 string summonername = "Summoner";
+bool secret4 = 0;
+bool secret5 = 0;
 
 string threestarlight[33] = { "Elven Ranger", "Frankenstein", "Mummy", "Martial Artist",
 "Charger Shark", "Mammoth", "Penguin Knight", "Beast Hunter", "Lizardman", "Minotauros", "Drunken Master",
@@ -67,6 +69,10 @@ int main()
             cout << "Choose summoner's name (current name: " << summonername << "): ";
             cin >> summonername;
             cout << endl;
+            if (summonername == "lucky69")
+                secret5 = 1;
+            else
+                secret5 = 0;
             cout << "Choose lightning waiting time (current speed: " << sleeptime << "): ";
             cin >> sleeptime;
             cout << endl;
@@ -99,9 +105,9 @@ int getRandomNumberForSummonRates() {
     random_device generator;
     uniform_int_distribution<int> distribution(1, 1000);
     adana = distribution(generator);
-    if (adana <= 5)
+    if (adana <= 5 || secret5)
         adana = 1; //Nat 5
-    else if (adana > 5 && adana <= 60)
+    else if ((adana > 5 && adana <= 60) || secret4)
         adana = 2; //Nat 4
     else
         adana = 3; //Nat 3
