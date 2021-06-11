@@ -34,7 +34,7 @@ string fourstardark[30] = { "Pirate Captain", "Giant Warrior", "Barbaric King", 
 "Succubus", "Sylphid", "Sylph", "Undine", "Nine-Tailed Fox", "Dryad", "Boomerang Warrior", "Chakram Dancer",
 "Dice Magician", "Sniper Mk.1", "Jack-o'-lantern", "Horus", "Neostone Fighter", "Assasin", "Magic Knight", "Mermaid" };
 
-string fivestarlight[25] = { "Druid", "Unicorn", "Harp Magician", "Panda Warrior", "Fairy King", "Desert Queen", "Horus", "Pioneer", "Sea Emperor",
+string fivestarlight[24] = { "Druid", "Unicorn", "Harp Magician", "Panda Warrior", "Fairy King", "Desert Queen", "Horus", "Pioneer", "Sea Emperor",
 "Polar Queen", "Sky Dancer", "Hell Lady", "Beast Monk", "Archangel", "Monkey King", "Dragon Knight", "Occult Girl", "Oracle",
 "Vampire", "Chimera", "Phoenix", "Dragon", "Valkyrja", "Lightning Emperor" };
 
@@ -131,10 +131,11 @@ void summon(int& nat5count, int& nat4count, int& nat3count) {
     LorD = getRandomNumberForLnD();
     natStar = getRandomNumberForSummonRates();
 
+    //Light
     if (LorD == 0) {
         if (natStar == 1) {
             nat5count++;
-            random = getRandomNumber(24);
+            random = getRandomNumber(23);
             cout << "!!!Lightning!!!" << endl;
             Sleep(sleeptime);
             cout << "!!!Lightning!!!" << endl;
@@ -157,6 +158,7 @@ void summon(int& nat5count, int& nat4count, int& nat3count) {
             cout << summonername << " just got light " << threestarlight[random] << endl;
         }
     }
+    //Dark
     if (LorD == 1) {
         if (natStar == 1) {
             nat5count++;
