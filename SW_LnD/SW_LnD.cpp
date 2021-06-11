@@ -50,58 +50,73 @@ void summon(int& nat5count, int& nat4count, int& nat3count);
 
 int main()
 {
-    cout << "Enter '0' to use LnD scroll or Enter '1' to access settings menu: ";
-    int usedScrollCount = 0;
-    int nat5count = 0;
-    int nat4count = 0;
-    int nat3count = 0;
-    int continuepls;
-    double finalscore;
-    double number;
-    cin >> continuepls;
-    while (continuepls == 0 || continuepls == 1) {
-        if (continuepls == 0) {
-            summon(nat5count, nat4count, nat3count);
-            usedScrollCount++;
-            cout << endl;
-        }
-        if (continuepls == 1) {
-            cout << "Choose summoner's name (current name: " << summonername << "): ";
-            cin >> summonername;
-            cout << endl;
-            if (summonername == "lucky69")
-                secret5 = 1;
-            else
-                secret5 = 0;
-            if (summonername == "cum2us")
-                secret4 = 1;
-            else
-                secret4 = 0;
-            cout << "Choose lightning waiting time (current speed: " << sleeptime << "): ";
-            cin >> sleeptime;
-            cout << endl;
-        }
-        cout << "Enter '0' to summon or Enter '1' to access settings menu or another number to see the results: ";
+    int startover;
+    bool start = 1;
+    while (start) {
+        cout << "Enter '0' to use LnD scroll or Enter '1' to access settings menu: ";
+        int usedScrollCount = 0;
+        int nat5count = 0;
+        int nat4count = 0;
+        int nat3count = 0;
+        int continuepls;
+        double finalscore;
+        double number;
         cin >> continuepls;
+        while (continuepls == 0 || continuepls == 1) {
+            if (continuepls == 0) {
+                summon(nat5count, nat4count, nat3count);
+                usedScrollCount++;
+                cout << endl;
+            }
+            if (continuepls == 1) {
+                cout << "Choose summoner's name (current name: " << summonername << "): ";
+                cin >> summonername;
+                cout << endl;
+                if (summonername == "lucky69")
+                    secret5 = 1;
+                else
+                    secret5 = 0;
+                if (summonername == "cum2us")
+                    secret4 = 1;
+                else
+                    secret4 = 0;
+                cout << "Choose lightning waiting time (current speed: " << sleeptime << "): ";
+                cin >> sleeptime;
+                cout << endl;
+            }
+            cout << "Enter '0' to summon or Enter '1' to access settings menu or another number to see the results: ";
+            cin >> continuepls;
+        }
+        cout << "**************" << endl;
+        cout << "Total amount of used scrolls: " << usedScrollCount << endl;
+        cout << "Total amount of 5* monsters pulled: " << nat5count << endl;
+        cout << "Total amount of 4* monsters pulled: " << nat4count << endl;
+        cout << "Total amount of 3* monsters pulled: " << nat3count << endl;
+        if (nat5count == 0 || nat4count == 0)
+            number = 1.5;
+        else
+            number = 2;
+        finalscore = (double)((double)(200 * (double)nat5count / (double)usedScrollCount) + (double)(50 / 3 * (double)nat4count / (double)usedScrollCount)) / number;
+        cout << "**************" << endl;
+        cout << "Your final score is: " << finalscore << endl;
+        cout << endl;
+        cout << "(Final score '1' represents average. '0' represents that all of the monsters you pulled were only 3 star monsters." << endl;
+        cout << "The higher your final score than '1', the more lucky your summons turned out)" << endl;
+        cout << "**************" << endl;
+        cout << "Enter '0' to start over at the beginning: ";
+        cin >> startover;
+        cout << endl;
+        if (startover == 0) {
+            start = true;
+            cout << "Your progress has been reset" << endl;
+            cout << endl;
+        }
+        else {
+            start = false;
+        }
     }
-    cout << "**************" << endl;
-    cout << "Total amount of used scrolls: " << usedScrollCount << endl;
-    cout << "Total amount of 5* monsters pulled: " << nat5count << endl;
-    cout << "Total amount of 4* monsters pulled: " << nat4count << endl;
-    cout << "Total amount of 3* monsters pulled: " << nat3count << endl;
-    if (nat5count == 0 || nat4count == 0)
-        number = 1.5;
-    else
-        number = 2;
-    finalscore = (double)((double)(200 * (double)nat5count / (double)usedScrollCount) + (double)(50 / 3 * (double)nat4count / (double)usedScrollCount)) / number;
-    cout << "**************" << endl;
-    cout << "Your final score is: " << finalscore << endl;
-    cout << endl;
-    cout << "(Final score '1' represents average. '0' represents that all of the monsters you pulled were only 3 star monsters." << endl;
-    cout << "The higher your final score than '1', the more lucky your summons turned out)" << endl;
-    cout << "**************" << endl;
     cout << "Enter any number to quit the program" << endl;
-    cin >> continuepls;
+    cin >> start;
 }
 
 int getRandomNumberForSummonRates() {
