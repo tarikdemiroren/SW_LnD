@@ -73,11 +73,11 @@ int main()
         double finalscore;
         double number;
         cin >> continuepls;
+        cout << endl;
         while (continuepls == 0 || continuepls == 1 || continuepls == 2 || continuepls == 3) {
             if (continuepls == 0) {
                 summon(nat5count, nat4count, nat3count, monstersname);
                 usedScrollCount++;
-                cout << endl;
             }
             if (continuepls == 1) {
                 cout << "Choose summoner's name (current name: " << summonername << "): ";
@@ -93,7 +93,6 @@ int main()
                     secret4 = 0;
                 cout << "Choose lightning waiting time (current speed: " << sleeptime << "): ";
                 cin >> sleeptime;
-                cout << endl;
             }
             if (continuepls == 2) {
                 cout << "**************" << endl;
@@ -124,13 +123,13 @@ int main()
                 getline(cin, monstersname);
                 if (attribute == 1) {
                     if (isOnListLight(monstersname)) {
-                        while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0 ) {
+                        while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0) {
                             youneedme = summon(nat5count, nat4count, nat3count, youalsoneedme);
                             usedScrollCount++;
                             wishcount++;
                         }
                         cout << "The mission, the nightmares... They are finally over. ~Fives" << endl;
-                        cout << "It only took " << wishcount << " amount of scrolls to pull the monster you wished" << endl;
+                        cout << "It only took " << wishcount << " amount of scrolls to pull the light " << monstersname << endl;
                     }
                     else {
                         cout << "The monster you wish is not existant" << endl;
@@ -144,14 +143,15 @@ int main()
                             wishcount++;
                         }
                         cout << "The mission, the nightmares... They are finally over. ~Fives" << endl;
-                        cout << "It only took " << wishcount << " amount of scrolls to pull the monster you wished" << endl;
+                        cout << "It only took " << wishcount << " amount of scrolls to pull the dark " << monstersname << endl;
                     }
                     else {
                         cout << "The monster you wish is not existant" << endl;
                     }
                 }
                 sleeptime = 1000;
-            }
+            }            
+            cout << endl;
             cout << "Enter '0' to summon manually" << endl;
             cout << "Enter '1' to access settings" << endl;
             cout << "Enter '2' to see the current status" << endl;
