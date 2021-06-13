@@ -124,7 +124,7 @@ int main()
                 getline(cin, monstersname);
                 if (attribute == 1) {
                     if (isOnListLight(monstersname)) {
-                        while (youneedme != attribute && monstersname.compare(youalsoneedme) != 0 ) {
+                        while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0 ) {
                             youneedme = summon(nat5count, nat4count, nat3count, youalsoneedme);
                             usedScrollCount++;
                             wishcount++;
@@ -138,7 +138,7 @@ int main()
                 }
                 if (attribute == 2) {
                     if (isOnListDark(monstersname)) {
-                        while (youneedme != attribute && monstersname.compare(youalsoneedme) != 0) {
+                        while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0) {
                             youneedme = summon(nat5count, nat4count, nat3count, youalsoneedme);
                             usedScrollCount++;
                             wishcount++;
@@ -276,7 +276,7 @@ int summon(int& nat5count, int& nat4count, int& nat3count, string& monname) {
         }
         return 2;
     }
-    
+    return 0;
 }
 
 bool isOnListDark(string name) {
