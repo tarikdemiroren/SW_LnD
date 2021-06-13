@@ -118,10 +118,10 @@ int main()
                 wishcount = 0;
                 cout << "Choose the attribute of the monster that you wish('1' for light, '2' for dark): ";
                 cin >> attribute;
-                cout << "Enter the name of the monster (capitalise the first letters in each words of the monster's name): " << endl;
-                getline(cin, monstersname);
-                getline(cin, monstersname);
                 if (attribute == 1) {
+                    cout << "Enter the name of the monster (capitalise the first letters in each words of the monster's name): " << endl;
+                    getline(cin, monstersname);
+                    getline(cin, monstersname);
                     if (isOnListLight(monstersname)) {
                         while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0) {
                             youneedme = summon(nat5count, nat4count, nat3count, youalsoneedme);
@@ -135,7 +135,9 @@ int main()
                         cout << "The monster you wish is not existant" << endl;
                     }
                 }
-                if (attribute == 2) {
+                else if (attribute == 2) {
+                    cout << "Enter the name of the monster (capitalise the first letters in each words of the monster's name): " << endl;
+                    getline(cin, monstersname);
                     if (isOnListDark(monstersname)) {
                         while (youneedme != attribute || monstersname.compare(youalsoneedme) != 0) {
                             youneedme = summon(nat5count, nat4count, nat3count, youalsoneedme);
@@ -148,6 +150,9 @@ int main()
                     else {
                         cout << "The monster you wish is not existant" << endl;
                     }
+                }
+                else {
+                    cout << "Invalid attribute input!";
                 }
                 sleeptime = 1000;
             }            
